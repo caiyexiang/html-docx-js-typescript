@@ -16,7 +16,7 @@ npm install html-docx-js-typescript --save-dev
 
 Support node.js and browser enviroment, including vue/react/angular.
 
-#### vue.js usage demo:
+#### Vue.js usage demo:
 
 ```js
 import { asBlob } from 'html-docx-js-typescript'
@@ -48,6 +48,29 @@ And you can set options including margins and orientation.
 
 ```js
 const data = await asBlob(htmlString, { orientation: 'landscape', margins: { top: 100 } })
+```
+
+#### Attentions!
+
+If you use this package in a Typescript file and declare the options to an independent `Object` like:
+``` js
+import { asBlob } from 'html-docx-js-typescript'
+const opt = {
+  margin: {
+    top: 100
+  },
+  orientation: 'landscape' // type error: because typescript automatically widen this type to 'string' but not 'Orient' - 'string literal type'
+}
+await asBlob(html, opt)
+```
+You can use `as const` to avoid type widening.
+``` js
+const opt = {
+  margin: {
+    top: 100
+  },
+  orientation: 'landscape' as const
+}
 ```
 
 ## License
