@@ -38,7 +38,8 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "release": "npm version patch && npm publish --registry http://registry.npmjs.org"
   },
   "author": {
     "name": "caiyexiang",
