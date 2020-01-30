@@ -2,7 +2,7 @@ export const mhtPartTemplate = (
   contentType: string,
   contentEncoding: string,
   contentLocation: string,
-  encodedContent: string
+  encodedContent: string,
 ) => {
   return `------=mhtDocumentPart
 Content-Type: ${contentType}

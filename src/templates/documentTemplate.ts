@@ -5,19 +5,14 @@ export const defaultMargins = {
   left: 1440,
   header: 720,
   footer: 720,
-  gutter: 0
+  gutter: 0,
 }
 
 export type Margins = typeof defaultMargins
 
 export type Orient = 'landscape' | 'portrait'
 
-export const documentTemplate = (
-  width: number,
-  height: number,
-  orient: string,
-  margins: Margins
-) => {
+export const documentTemplate = (width: number, height: number, orient: string, margins: Margins) => {
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:document
   xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"

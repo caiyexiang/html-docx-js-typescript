@@ -10,23 +10,11 @@ export function getMHTdocument(htmlSource: string) {
 function _prepareImageParts(htmlSource: string) {
   const imageContentParts: string[] = []
   const inlinedSrcPattern = /"data:(\w+\/\w+);(\w+),(\S+)"/g
-  const inlinedReplacer = (
-    match: string,
-    contentType: string,
-    contentEncoding: string,
-    encodedContent: string
-  ) => {
+  const inlinedReplacer = (match: string, contentType: string, contentEncoding: string, encodedContent: string) => {
     const index = imageContentParts.length
     const extension = contentType.split('/')[1]
     const contentLocation = `file:///C:/fake/image${index}.${extension}`
-    imageContentParts.push(
-      mhtPartTemplate(
-        contentType,
-        contentEncoding,
-        contentLocation,
-        encodedContent
-      )
-    )
+    imageContentParts.push(mhtPartTemplate(contentType, contentEncoding, contentLocation, encodedContent))
     return `\"${contentLocation}\"`
   }
   if (!/<img/g.test(htmlSource)) {
