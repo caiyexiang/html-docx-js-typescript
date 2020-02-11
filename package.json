@@ -1,6 +1,6 @@
 {
   "name": "html-docx-js-typescript",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Convert HTML documents to docx format.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
