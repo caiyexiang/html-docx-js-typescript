@@ -1,4 +1,4 @@
-import JSZip = require('jszip')
+import JSZip from 'jszip'
 import { getMHTdocument } from './utils'
 import { contentTypesXml, documentXmlRels, relsXml } from './assets'
 import { documentTemplate, Orient, Margins, defaultMargins } from './templates'
@@ -40,8 +40,7 @@ function renderDocumentFile(documentOptions: DocumentOptions) {
   }
   return documentTemplate(width, height, orientation, marginsOptions)
 }
-export function addFiles(htmlSource: string, options: Partial<DocumentOptions>) {
-  const zip = new JSZip()
+export function addFiles(zip: JSZip, htmlSource: string, options: Partial<DocumentOptions>) {
   const documentOptions = mergeOptions(defaultDocumentOptions, options)
   zip.file('[Content_Types].xml', new Buffer(contentTypesXml, 'utf-8'), {
     createFolders: false,
