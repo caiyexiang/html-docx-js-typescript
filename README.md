@@ -36,9 +36,10 @@ const htmlString = `<!DOCTYPE html>
 
 export default {
   methods: {
-    async saveDocx() {
-      const fileData = await asBlob(htmlString) // asBlob() return Promise<Blob|Buffer>
-      saveAs(fileData, 'file.docx') // save as docx file
+    saveDocx() {
+      asBlob(htmlString).then(data => {
+        saveAs(data, 'file.docx') // save as docx file
+      }) // asBlob() return Promise<Blob|Buffer>
     },
   },
 }
@@ -50,7 +51,7 @@ And you can set options including margins and orientation.
 const data = await asBlob(htmlString, { orientation: 'landscape', margins: { top: 100 } })
 ```
 
-#### Attentions!
+#### literal type widen issue
 
 If you use this package in a Typescript file and declare the options to an independent `Object` like:
 ``` js
