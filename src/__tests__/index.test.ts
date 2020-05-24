@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { asBlob } from '../index'
 
 const HTML_CASE = `<!DOCTYPE html>
@@ -7,7 +10,7 @@ const HTML_CASE = `<!DOCTYPE html>
   <title>Document</title>
 </head>
 <body>
-  <h1>Use node.js enviroment</h1>
+  <h1>jest test</h1>
 </body>
 </html>`
 

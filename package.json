@@ -11,9 +11,11 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@types/browser-or-node": "^1.2.0",
     "@types/jest": "^24.9.1",
     "@types/jszip": "^3.1.7",
     "@types/node": "^13.1.7",
+    "browser-or-node": "^1.2.1",
     "commitizen": "^4.0.3",
     "cross-env": "^6.0.3",
     "cz-conventional-changelog": "^3.0.2",

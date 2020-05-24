@@ -2,6 +2,7 @@ import JSZip from 'jszip'
 import { getMHTdocument } from './utils'
 import { contentTypesXml, documentXmlRels, relsXml } from './assets'
 import { documentTemplate, Orient, Margins, defaultMargins } from './templates'
+import { isBrowser } from 'browser-or-node'
 
 export type DocumentOptions = typeof defaultDocumentOptions
 
@@ -16,16 +17,19 @@ function mergeOptions<T>(options: T, patch: Partial<T>) {
 
 export async function generateDocument(zip: JSZip) {
   const buffer = await zip.generateAsync({ type: 'arraybuffer' })
-  if (global.hasOwnProperty('Blob')) {
+  if (isBrowser) {
     return new Blob([buffer], {
       type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     })
-  } else if (global.hasOwnProperty('Buffer')) {
-    return new Buffer(new Uint8Array(buffer))
   } else {
-    throw new Error('Neither Blob nor Buffer are accessible in this environment. ' + 'Consider adding Blob.js shim')
+    return new Buffer(new Uint8Array(buffer))
   }
 }
+
+function getBinaryData(str: string) {
+  return isBrowser ? new Blob([str]) : new Buffer(str, 'utf-8')
+}
+
 function renderDocumentFile(documentOptions: DocumentOptions) {
   const { orientation, margins } = documentOptions
   const marginsOptions = mergeOptions(defaultMargins, margins)
@@ -40,12 +44,13 @@ function renderDocumentFile(documentOptions: DocumentOptions) {
   }
   return documentTemplate(width, height, orientation, marginsOptions)
 }
+
 export function addFiles(zip: JSZip, htmlSource: string, options: Partial<DocumentOptions>) {
   const documentOptions = mergeOptions(defaultDocumentOptions, options)
-  zip.file('[Content_Types].xml', new Buffer(contentTypesXml, 'utf-8'), {
+  zip.file('[Content_Types].xml', getBinaryData(contentTypesXml), {
     createFolders: false,
   })
-  zip.folder('_rels').file('.rels', new Buffer(relsXml, 'utf-8'), { createFolders: false })
+  zip.folder('_rels').file('.rels', getBinaryData(relsXml), { createFolders: false })
   return zip
     .folder('word')
     .file('document.xml', renderDocumentFile(documentOptions), {
@@ -55,7 +60,7 @@ export function addFiles(zip: JSZip, htmlSource: string, options: Partial<Docume
       createFolders: false,
     })
     .folder('_rels')
-    .file('document.xml.rels', new Buffer(documentXmlRels, 'utf-8'), {
+    .file('document.xml.rels', getBinaryData(documentXmlRels), {
       createFolders: false,
     })
 }
