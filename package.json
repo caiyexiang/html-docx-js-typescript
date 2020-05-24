@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
+    "browser-or-node": "^1.2.1",
     "jszip": "^3.4.0",
     "tslib": "^1.13.0"
   },
@@ -13,9 +14,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@types/browser-or-node": "^1.2.0",
     "@types/jest": "^24.9.1",
-    "@types/jszip": "^3.4.1",
     "@types/node": "^13.13.9",
-    "browser-or-node": "^1.2.1",
     "commitizen": "^4.1.2",
     "cross-env": "^6.0.3",
     "cz-conventional-changelog": "^3.2.0",
