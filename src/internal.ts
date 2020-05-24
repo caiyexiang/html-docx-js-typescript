@@ -1,4 +1,4 @@
-import JSZip from 'jszip'
+import JSZip = require('jszip')
 import { getMHTdocument } from './utils'
 import { contentTypesXml, documentXmlRels, relsXml } from './assets'
 import { documentTemplate, Orient, Margins, defaultMargins } from './templates'

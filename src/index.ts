@@ -1,5 +1,5 @@
 import { addFiles, generateDocument, DocumentOptions } from './internal'
-import JSZip from 'jszip'
+import JSZip = require('jszip')
 
 export async function asBlob(html: string, options: Partial<DocumentOptions> = {}) {
   const zip = new JSZip()
