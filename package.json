@@ -5,30 +5,30 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "jszip": "^3.2.2",
-    "tslib": "^1.10.0"
+    "jszip": "^3.4.0",
+    "tslib": "^1.13.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@types/browser-or-node": "^1.2.0",
     "@types/jest": "^24.9.1",
-    "@types/jszip": "^3.1.7",
-    "@types/node": "^13.1.7",
+    "@types/jszip": "^3.4.1",
+    "@types/node": "^13.13.9",
     "browser-or-node": "^1.2.1",
-    "commitizen": "^4.0.3",
+    "commitizen": "^4.1.2",
     "cross-env": "^6.0.3",
-    "cz-conventional-changelog": "^3.0.2",
-    "husky": "^4.2.1",
-    "jest": "^25.1.0",
+    "cz-conventional-changelog": "^3.2.0",
+    "husky": "^4.2.5",
+    "jest": "^25.5.4",
     "lodash": "^4.17.15",
     "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
-    "ts-jest": "^25.0.0",
-    "ts-loader": "^6.2.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.5.1",
+    "ts-loader": "^6.2.2",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.9.3"
   },
   "scripts": {
     "lint": "tslint \"src/**/*\" --project tsconfig.json",
