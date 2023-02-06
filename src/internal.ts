@@ -22,12 +22,12 @@ export async function generateDocument(zip: JSZip) {
       type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     })
   } else {
-    return new Buffer(new Uint8Array(buffer))
+    return Buffer.from(new Uint8Array(buffer))
   }
 }
 
 function getBinaryData(str: string) {
-  return isBrowser ? new Blob([str]) : new Buffer(str, 'utf-8')
+  return isBrowser ? new Blob([str]) : Buffer.from(str, 'utf-8')
 }
 
 function renderDocumentFile(documentOptions: DocumentOptions) {
