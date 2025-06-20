@@ -1,6 +1,6 @@
 # html-docx-js-typescript
 
-[![NPM version][npm-image]][npm-url]
+[![NPM version][npm-image]][npm-url] ![NPM Downloads](https://img.shields.io/npm/dm/html-docx-js-typescript.svg) ![NPM Downloads](https://img.shields.io/npm/dt/html-docx-js-typescript.svg)
 
 > Rewrite [html-docx-js](https://www.npmjs.com/package/html-docx-js) with Typescript.
 
